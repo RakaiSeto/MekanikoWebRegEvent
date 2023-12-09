@@ -1,0 +1,121 @@
+syntax = "proto3";
+option go_package = ".";
+package Presales;
+
+message PresalesLoginRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+  string email = 4;
+  string password = 5;
+}
+message PresalesLoginList {
+  string signature = 1;
+  string langid = 2;
+  string userid = 3;
+  string username = 4;
+  string email = 5;
+  string roleid = 6;
+  string role = 7;
+  string firstname = 8;
+  string lastname = 9;
+ }
+message PresalesLoginResponse {
+  string status = 1;
+  string description = 2;
+  repeated PresalesLoginList results = 3;
+}
+
+message PresalesViewRequest {
+  string signature = 1;
+  string remoteip = 2;
+  string weburl = 3;
+  string langid = 4;
+  string userid = 5;
+  string email = 6;
+  string adminid = 7;
+}
+message PresalesViewList {
+  string principalid = 1;
+  string company = 2;
+  string brandname = 3;
+}
+message PresalesViewResponse {
+  string status = 1;
+  string description = 2;
+  repeated PresalesViewList results = 3;
+}
+
+message PresalesByIDViewRequest {
+  string signature = 1;
+  string remoteip = 2;
+  string weburl = 3;
+  string langid = 4;
+  string userid = 5;
+  string email = 6;
+  string adminid = 7;
+  string principalid = 8;
+}
+message PresalesByIDViewList {
+  string firstname = 1;
+  string lastname = 2;
+  string company = 3;
+  string brandname = 4;
+  string category = 5;
+  string subcategory = 6;
+  string emailaddress = 7;
+  string phone = 8;
+  string code = 9;
+}
+message PresalesByIDViewResponse {
+  string status = 1;
+  string description = 2;
+  repeated PresalesByIDViewList results = 3;
+}
+
+message PresalesAddRequest {
+  string signature = 1;
+  string remoteip = 2;
+  string weburl = 3;
+  string langid = 4;
+  string userid = 5;
+  string email = 6;
+  string adminid = 7;
+  repeated PresalesAddData data = 8;
+}
+message PresalesAddData {
+  string firstname = 1;
+  string lastname = 2;
+  string company = 3;
+  string brandname = 4;
+  string categoryid = 5;
+  string subcategoryid = 6;
+  string emailaddress = 7;
+  string phone = 8;
+}
+message PresalesAddList {
+  string firstname = 1;
+  string lastname = 2;
+  string company = 3;
+  string brandname = 4;
+  string category = 5;
+  string subcategory = 6;
+  string emailaddress = 7;
+  string phone = 8;
+  string code = 9;
+}
+message PresalesAddResponse {
+  string status = 1;
+  string description = 2;
+  repeated PresalesAddList results = 3;
+}
+
+
+service PresalesService {
+
+  rpc DoPresalesLogin(PresalesLoginRequest) returns (PresalesLoginResponse) {}
+  rpc DoPresalesView(PresalesViewRequest) returns (PresalesViewResponse) {}
+  rpc DoPresalesByIDView(PresalesByIDViewRequest) returns (PresalesByIDViewResponse) {}
+  rpc DoPresalesAdd(PresalesAddRequest) returns (PresalesAddResponse) {}
+
+}

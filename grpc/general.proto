@@ -1,0 +1,106 @@
+syntax = "proto3";
+option go_package = ".";
+package General;
+
+message GeneralCategoryRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+}
+message GeneralCategoryList {
+  string id = 1;
+  string name = 2;
+}
+message GeneralCategoryResponse {
+  string status = 1;
+  string description = 2;
+  repeated GeneralCategoryList results = 3;
+}
+
+message GeneralSubCategoryRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+  string categoryid = 4;
+}
+message GeneralSubCategoryList {
+  string id = 1;
+  string name = 2;
+}
+message GeneralSubCategoryResponse {
+  string status = 1;
+  string description = 2;
+  repeated GeneralSubCategoryList results = 3;
+}
+
+message GeneralSectionRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+}
+message GeneralSectionList {
+  string id = 1;
+  string name = 2;
+}
+message GeneralSectionResponse {
+  string status = 1;
+  string description = 2;
+  repeated GeneralSectionList results = 3;
+}
+
+message GeneralCountryRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+}
+message GeneralCountryList {
+  string id = 1;
+  string name = 2;
+}
+message GeneralCountryResponse {
+  string status = 1;
+  string description = 2;
+  repeated GeneralCountryList results = 3;
+}
+
+message GeneralUserTypeRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+}
+message GeneralUserTypeList {
+  string id = 1;
+  string name =2;
+}
+message GeneralUserTypeResponse {
+  string status = 1;
+  string description = 2;
+  repeated GeneralUserTypeList results = 3;
+}
+
+message GeneralSupportTypeRequest {
+  string remoteip = 1;
+  string weburl = 2;
+  string langid = 3;
+}
+message GeneralSupportTypeList {
+  string id = 1;
+  string name =2;
+}
+message GeneralSupportTypeResponse {
+  string status = 1;
+  string description = 2;
+  repeated GeneralSupportTypeList results = 3;
+}
+
+service GeneralService {
+
+  rpc DoGetCategory(GeneralCategoryRequest) returns (GeneralCategoryResponse) {}
+  rpc DoGetSubCategory(GeneralSubCategoryRequest) returns (GeneralSubCategoryResponse) {}
+  rpc DoGetSection(GeneralSectionRequest) returns (GeneralSectionResponse) {}
+  rpc DoGetCountry(GeneralCountryRequest) returns (GeneralCountryResponse) {}
+  rpc DoGetUserType(GeneralUserTypeRequest) returns (GeneralUserTypeResponse) {}
+  rpc DoGetSupportType(GeneralSupportTypeRequest) returns (GeneralSupportTypeResponse) {}
+
+
+}
